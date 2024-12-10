@@ -1,6 +1,7 @@
 import express from "express";
 import path from 'path';
 import router from "./router";
+import routerAdmin from "./routerAdmin";
 
 /**1-ENTRANCE **/
 const app = express();
@@ -16,7 +17,8 @@ app.set('view engine', 'ejs');
 
 /**4-ROUTERS **/
 
-app.use("/", router);  // Mid DP slashdan keladigan req larni routerga yuboradi
-
+app.use("/admin", routerAdmin); // BSSR : EJS bu adminka uchun
+app.use("/", router);           // SPA: REACT bu user frontend uchun
+// Mid DP slashdan keladigan req larni routerga yuboradi
 
 export default app;
