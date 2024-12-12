@@ -2,12 +2,16 @@ import express from "express";
 import path from 'path';
 import router from "./router";
 import routerAdmin from "./routerAdmin";
+import morgan from 'morgan';
+import { MORGAN_FORMAT } from './libs/config';
 
 /**1-ENTRANCE **/
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended:true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended:true })); // Traditional API
+app.use(express.json());                        // REST API
+app.use(morgan(MORGAN_FORMAT));
+
 
 /**2-SESSIONS **/
 
@@ -19,6 +23,6 @@ app.set('view engine', 'ejs');
 
 app.use("/admin", routerAdmin); // BSSR : EJS bu adminka uchun
 app.use("/", router);           // SPA: REACT bu user frontend uchun
-// Mid DP slashdan keladigan req larni routerga yuboradi
+// Middelware DP slashdan keladigan req larni routerga yuboradi (use) 
 
 export default app;
