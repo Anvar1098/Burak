@@ -24,29 +24,51 @@
 
   //-------------------------------------------------------------------------------------------
 
-  function majorityElement(arr: number[]): number | null { 
-    const count: Record<number, number> = {};
+//   function majorityElement(arr: number[]): number | null { 
+//     const count: Record<number, number> = {};
 
-    // Har bir elementni hisoblash
-    for (const num of arr) {
-        count[num] = (count[num] || 0) + 1;
-    }
+//     // Har bir elementni hisoblash
+//     for (const num of arr) {
+//         count[num] = (count[num] || 0) + 1;
+//     }
 
-    // Eng ko'p takrorlangan elementni topish
-    let maxElement: number | null = null;
-    let maxCount = 0;
+//     // Eng ko'p takrorlangan elementni topish
+//     let maxElement: number | null = null;
+//     let maxCount = 0;
 
-    for (const num in count) {
-        if (count[num] > maxCount) {
-            maxCount = count[num];
-            maxElement = Number(num);
-        }
-    }
+//     for (const num in count) {
+//         if (count[num] > maxCount) {
+//             maxCount = count[num];
+//             maxElement = Number(num);
+//         }
+//     }
 
-    return maxElement;
-}
+//     return maxElement;
+// }
 
-// Misol:
-console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
-console.log(majorityElement([10, 25, 38, 10, 55, 15, 3, 1])); 
+// // Misol:
+// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
+// console.log(majorityElement([10, 25, 38, 10, 55, 15, 3, 1])); 
 
+//-------------------------------------------------------------------------------------------
+
+function findLongestWord(str: string): string {
+    
+    const words: string[] = str.split(" ");
+    
+    //  Eng uzun so'z uchun boshlang'ich qiymat
+    let longest: string = "";
+  
+    //  So'zlarni tekshirish
+    words.forEach((word: string) => {
+      if (word.length > longest.length) {
+        longest = word; // Eng uzun so'zni yangilash
+      }
+    });
+  
+    return longest; // Eng uzun so'zni qaytarish
+  }
+  
+  // Sinab ko'rish
+  console.log(findLongestWord("I came from Uzbekistan!")); 
+  

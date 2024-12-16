@@ -21,11 +21,11 @@ class MemberService {
         
         
         const salt = await bcrypt.genSalt();
-        input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
+        input.memberPassword = await bcrypt.hash(input.memberPassword, salt); 
         
         
         try {
-            const result = await this.memberModel.create(input); 
+            const result = await this.memberModel.create(input); // Member Schema model orqali DB ga connect 
             result.memberPassword = "";
             return result;
         } catch (err) {

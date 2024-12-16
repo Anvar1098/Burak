@@ -56,8 +56,8 @@ restaurantController.processSignup =  async (req: Request, res: Response) => {
         const newMember: MemberInput = req.body;
         newMember.memberType = MemberType.RESTAURANT;
 
-        const memberService = new MemberService();
-        const result = await memberService.processSignup(newMember);
+        const memberService = new MemberService(); // shu qismda MemberService Model ulanmoqda
+        const result = await memberService.processSignup(newMember);  // New member Objecti argument sifatida pass boldi
         res.send(result);
     } catch (err) {
         console.log('processSignup', err)
@@ -65,4 +65,4 @@ restaurantController.processSignup =  async (req: Request, res: Response) => {
     } 
 };
 
-export default restaurantController;
+export default restaurantController;  
