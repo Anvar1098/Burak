@@ -3,8 +3,8 @@ import { ObjectId } from "mongoose";
 
 export interface Member {
     _id: ObjectId;
-    memberType?:  MemberType;
-    memberStatus?: MemberStatus;
+    memberType:  MemberType;
+    memberStatus: MemberStatus;
     memberNick: string;
     memberPhone: string;
     memberPassword?: string;

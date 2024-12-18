@@ -23,6 +23,6 @@ app.set('view engine', 'ejs');
 
 app.use("/admin", routerAdmin); // BSSR : EJS bu adminka uchun
 app.use("/", router);           // SPA: REACT bu user frontend uchun
-// Middelware DP slashdan keladigan req larni routerga yuboradi (use) 
+// Endpointdan keladigan req larni routerga yuboradi (use) 
 
 export default app;
