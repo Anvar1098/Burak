@@ -43,7 +43,9 @@ restaurantController.processSignup =  async (req: Request, res: Response) => {
         const newMember: MemberInput = req.body;
         newMember.memberType = MemberType.RESTAURANT;
         const result = await memberService.processSignup(newMember);  // (Call qismi) New member Objecti argument sifatida pass boldi
-        
+        // TODO: SESSIONS AUTHENTICATION 
+
+
         res.send(result);
     } catch (err) {
         console.log('processSignup', err)
@@ -57,6 +59,9 @@ restaurantController.processLogin = async (req: Request, res: Response) => {
        
         const input: LoginInput = req.body;
         const result = await memberService.processLogin(input);
+        // TODO: SESSIONS AUTHENTICATION 
+
+
 
         res.send(result);
     } catch (err) {

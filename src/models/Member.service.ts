@@ -3,7 +3,7 @@ import { LoginInput, Member, MemberInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import { MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
-import { console } from "inspector";
+
 
 
 class MemberService {
