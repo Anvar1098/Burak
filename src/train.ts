@@ -52,23 +52,44 @@
 
 //-------------------------------------------------------------------------------------------
 
-function findLongestWord(str: string): string {
+// function findLongestWord(str: string): string {
     
-    const words: string[] = str.split(" ");
+//     const words: string[] = str.split(" ");
     
-    //  Eng uzun so'z uchun boshlang'ich qiymat
-    let longest: string = "";
+//     //  Eng uzun so'z uchun boshlang'ich qiymat
+//     let longest: string = "";
   
-    //  So'zlarni tekshirish
-    words.forEach((word: string) => {
-      if (word.length > longest.length) {
-        longest = word; // Eng uzun so'zni yangilash
-      }
-    });
+//     //  So'zlarni tekshirish
+//     words.forEach((word: string) => {
+//       if (word.length > longest.length) {
+//         longest = word; // Eng uzun so'zni yangilash
+//       }
+//     });
   
-    return longest; // Eng uzun so'zni qaytarish
+//     return longest; // Eng uzun so'zni qaytarish
+//   }
+  
+//   // Sinab ko'rish
+//   console.log(findLongestWord("I came from Uzbekistan!")); 
+  
+
+//-------------------------------------------------------------------------------------------
+
+function countVowels(str: string): number {
+  const vowels = "aeiouAEIOU"; // Define vowels (both uppercase and lowercase)
+  let count = 0; 
+
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) {
+      count++; 
+    }
   }
-  
-  // Sinab ko'rish
-  console.log(findLongestWord("I came from Uzbekistan!")); 
-  
+
+  return count; 
+}
+
+
+console.log(countVowels("MIT")); 
+console.log(countVowels("Jack"));  
+console.log(countVowels("Anvar"));  
+
