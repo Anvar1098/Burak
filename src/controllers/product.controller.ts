@@ -4,7 +4,7 @@ import  { Request, Response } from "express";
 import ProductService from "../models/product.service";
 import { AdminRequest } from "../libs/types/member";
 
-const productService = new ProductService;
+const productService = new ProductService();
 
 const productController: T = {};
 

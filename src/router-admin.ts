@@ -19,7 +19,8 @@ routerAdmin
 
 
 /*  Product */
-routerAdmin.get('/product/all', 
+routerAdmin.get(
+    '/product/all', 
     restaurantController.verifyRestaurant,
     productController.getAllproducts
     );

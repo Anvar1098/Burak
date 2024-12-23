@@ -80,7 +80,7 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
         console.log('Error, processSignup!', err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
         res.send(`<script>  alert("${message}");
-        window.location.replace('admin/signup) </script>}`);
+        window.location.replace('admin/signup') </script>}`);
     }
 };
 
@@ -115,14 +115,13 @@ restaurantController.verifyRestaurant = (
     res: Response,
     next: NextFunction
 ) => {
-   
-    if(req.session?.member?.memberType === MemberType.RESTAURANT) {
+   if(req.session?.member?.memberType === MemberType.RESTAURANT) {
         req.member = req.session.member;
         next();
     } else {
         const message = Message.NOT_AUTHENTICATED;
         res.send(
-            `<script> alert("${message}"); window.location.replace('admin/login'); </script>`
+            `<script> alert("${message}"); window.location.replace('/admin/login'); </script>`
         );
     }
 };
