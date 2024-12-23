@@ -19,7 +19,10 @@ routerAdmin
 
 
 /*  Product */
-routerAdmin.get('/product/all', productController.getAllproducts);
+routerAdmin.get('/product/all', 
+    restaurantController.verifyRestaurant,
+    productController.getAllproducts
+    );
 routerAdmin.post('/product/create', productController.createNewProduct);
 routerAdmin.post('/product/:id', productController.updateChosenProduct);
 
