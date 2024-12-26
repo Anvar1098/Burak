@@ -75,21 +75,32 @@
 
 //-------------------------------------------------------------------------------------------
 
-function countVowels(str: string): number {
-  const vowels = "aeiouAEIOU"; // Define vowels (both uppercase and lowercase)
-  let count = 0; 
+// function countVowels(str: string): number {
+//   const vowels = "aeiouAEIOU"; // Define vowels (both uppercase and lowercase)
+//   let count = 0; 
 
-  for (let i = 0; i < str.length; i++) {
-    if (vowels.includes(str[i])) {
-      count++; 
-    }
-  }
+//   for (let i = 0; i < str.length; i++) {
+//     if (vowels.includes(str[i])) {
+//       count++; 
+//     }
+//   }
 
-  return count; 
+//   return count; 
+// }
+
+
+// console.log(countVowels("MIT")); 
+// console.log(countVowels("Jack"));  
+// console.log(countVowels("Anvar"));  
+
+//-------------------------------------------------------------------------------------------
+
+function reverseSentence(str: string): string {
+  return str
+    .split(' ') // Gapni so'zga ajratish
+    .map(word => word.split('').reverse().join('')) // Har bir so'zni teskarisiga o'zgartirish
+    .join(' '); // So'zlarni qaytadan birlashtirish
 }
 
-
-console.log(countVowels("MIT")); 
-console.log(countVowels("Jack"));  
-console.log(countVowels("Anvar"));  
-
+console.log(reverseSentence("Atletico Madrid uno love!")); 
+console.log(reverseSentence("MIT 21 JACK!")); 
