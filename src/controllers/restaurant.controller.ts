@@ -88,7 +88,7 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
     }
 };
 
-restaurantController.logout = async (req: AdminRequest, res: Response) => {
+restaurantController.logout = async (req: AdminRequest, res: Response) => { 
     try {
         console.log("logout");
       req.session.destroy(() => {
