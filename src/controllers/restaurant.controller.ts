@@ -101,6 +101,34 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
     }
 };
 
+restaurantController.getUsers = async (req: Request, res: Response) => {
+    try {
+      console.log("getUsers"); // shu joygacha bo'lgan mantiqda xato
+      //bo'lgan bo'lmaganini tekshirish uchun
+      // RESPONSE turlari: send, render, json, redirect, end
+      const result = await memberService.getUsers();
+      console.log("Result:", result);
+      res.render("users", { users: result });
+    } catch (err) {
+      console.log("Error: getUsers", err);
+      res.redirect("/admin/login");
+    }
+  };
+  
+  restaurantController.updateChosenUser = async (req: Request, res: Response) => {
+    try {
+      console.log("updateChosenUser"); // shu joygacha bo'lgan mantiqda xato
+      //bo'lgan bo'lmaganini tekshirish uchun
+      // RESPONSE turlari: send, render, json, redirect, end
+      const result = await memberService.updateChosenUser(req.body);
+      res.status(HttpCode.OK).json({ data: result });
+    } catch (err) {
+      console.log("Error: updateChosenUser", err);
+      if (err instanceof Errors) res.status(err.code).json(err);
+      else res.status(Errors.standard.code).json(Errors.standard);
+    }
+  };
+
 restaurantController.checkAuthSession = async (req: AdminRequest, res: Response) => {
     try {
         console.log("checkAuthSession");
