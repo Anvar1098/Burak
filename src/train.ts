@@ -95,12 +95,21 @@
 
 //-------------------------------------------------------------------------------------------
 
-function reverseSentence(str: string): string {
-  return str
-    .split(' ') // Gapni so'zga ajratish
-    .map(word => word.split('').reverse().join('')) // Har bir so'zni teskarisiga o'zgartirish
-    .join(' '); // So'zlarni qaytadan birlashtirish
-}
+// function reverseSentence(str: string): string {
+//   return str
+//     .split(' ') // Gapni so'zga ajratish
+//     .map(word => word.split('').reverse().join('')) // Har bir so'zni teskarisiga o'zgartirish
+//     .join(' '); // So'zlarni qaytadan birlashtirish
+// }
 
-console.log(reverseSentence("Atletico Madrid uno love!")); 
-console.log(reverseSentence("MIT 21 JACK!")); 
+// console.log(reverseSentence("Atletico Madrid uno love!")); 
+// console.log(reverseSentence("MIT 21 JACK!")); 
+
+//-------------------------------------------------------------------------------------------------------------
+
+const palindromCheck = (word: string): boolean => word === [...word].reverse().join("");
+
+
+console.log(palindromCheck("dad")); 
+console.log(palindromCheck("son")); 
+console.log(palindromCheck("mom")); 
