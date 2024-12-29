@@ -106,6 +106,3 @@ class MemberService {
 
 export default MemberService;
 
-// function processSignup(input: any, MemberInput: any) {
-//     throw new Error("Function not implemented.");
-// }
