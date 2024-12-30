@@ -63,7 +63,7 @@ restaurantController.processSignup =  async (req:  AdminRequest, res: Response) 
         console.log('Error, processSignup!', err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
         res.send(`<script>  alert("${message}");
-        window.location.replace('admin/signup) </script>}`);
+        window.location.replace('/admin/signup) </script>}`);
     }
 };
 
@@ -84,7 +84,7 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
         console.log('Error, processSignup!', err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
         res.send(`<script>  alert("${message}");
-        window.location.replace('admin/login') </script>}`);
+        window.location.replace('/admin/login') </script>}`);
     }
 };
 
@@ -101,14 +101,13 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
     }
 };
 
-restaurantController.getUsers = async (req: Request, res: Response) => {
+restaurantController.getUsers = async (req: Request, res: Response) => {  // parametr
     try {
       console.log("getUsers"); // shu joygacha bo'lgan mantiqda xato
       //bo'lgan bo'lmaganini tekshirish uchun
-      // RESPONSE turlari: send, render, json, redirect, end
-      const result = await memberService.getUsers();
+      const result = await memberService.getUsers();  //  memberService. (Objectini .getUsers metodini chaqirdik)
       console.log("Result:", result);
-      res.render("users", { users: result });
+      res.render("users", { users: result });  // local data yuborish (ejs ga)
     } catch (err) {
       console.log("Error: getUsers", err);
       res.redirect("/admin/login");
@@ -117,9 +116,7 @@ restaurantController.getUsers = async (req: Request, res: Response) => {
   
   restaurantController.updateChosenUser = async (req: Request, res: Response) => {
     try {
-      console.log("updateChosenUser"); // shu joygacha bo'lgan mantiqda xato
-      //bo'lgan bo'lmaganini tekshirish uchun
-      // RESPONSE turlari: send, render, json, redirect, end
+      console.log("updateChosenUser"); 
       const result = await memberService.updateChosenUser(req.body);
       res.status(HttpCode.OK).json({ data: result });
     } catch (err) {

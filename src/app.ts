@@ -1,3 +1,4 @@
+// Backend API server
 import express from "express";
 import path from 'path';
 import router from "./router";
@@ -5,6 +6,7 @@ import routerAdmin from "./router-admin";
 import morgan from 'morgan';
 import { MORGAN_FORMAT } from './libs/config';
 
+// TCP 2 => Authentication uchun fakat
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
 import { T } from "./libs/types/common";
@@ -12,7 +14,7 @@ import { T } from "./libs/types/common";
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore ({
     uri: String(process.env.MONGO_URL),
-    collection: "sessions",
+    collection: "sessions",  // TCP shu uchun qurildi
 });
 
 /**1-ENTRANCE **/
@@ -20,16 +22,17 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended:true })); // Traditional API
 app.use(express.json());                        // REST API
-app.use(morgan(MORGAN_FORMAT));
+app.use(morgan(MORGAN_FORMAT));                 // Logging mexanizm 
 
 
 /**2-SESSIONS **/
 
+// 1)Tamga qurish           2) Tamgani oqish
 app.use(
     session({
       secret: String(process.env.SESSION_SECRET),
       cookie: {
-        maxAge: 1000 * 3600 * 6,  // 3h
+        maxAge: 1000 * 3600 * 6,  // 6h
       },
       store: store,
       resave: true,
@@ -37,6 +40,8 @@ app.use(
     })
 );
 
+// req. +session.+member va res.locals ga saqlanadi
+// global tarzda data yuborish (ejs ga)
 app.use(function(req, res, next) {
   const sessionInstance = req.session as T;
   res.locals.member = sessionInstance.member;

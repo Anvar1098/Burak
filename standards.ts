@@ -8,7 +8,22 @@
 
 */
 
-/**MONGO_URL= "mongodb+srv://anvar00:CZ2CVKkprEreoL2W@cluster0.wetuy.mongodb.net/Burak 
- * 
- * mongodb+srv://anvar00:CZ2CVKkprEreoL2W@cluster0.wetuy.mongodb.net/Burak?retryWrites=true&w=majority&appName=Cluster0
-*/
+/**
+ Request :
+  1) Traditional API
+  2) Rest API
+  3) GraphQL API
+ */
+
+/**  
+ Cookies :
+  1) request join
+  2) self destroy 
+ */
+
+/** 
+ Validation :
+  1) Frontend validation
+  2) Backend validation
+  3) Database validation
+ */
