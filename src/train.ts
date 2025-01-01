@@ -107,9 +107,20 @@
 
 //-------------------------------------------------------------------------------------------------------------
 
-const palindromCheck = (word: string): boolean => word === [...word].reverse().join("");
+// const palindromCheck = (word: string): boolean => word === [...word].reverse().join("");
 
 
-console.log(palindromCheck("dad")); 
-console.log(palindromCheck("son")); 
-console.log(palindromCheck("mom")); 
+// console.log(palindromCheck("dad")); 
+// console.log(palindromCheck("son")); 
+// console.log(palindromCheck("mom")); 
+
+//---------------------------------------------------------------------------------------------------------
+
+function calculateSumOfNumbers(arr: any[]): number {
+  return arr.reduce((sum: number, item: any) => (typeof item === 'number' ? sum + item : sum), 0);
+}
+
+
+console.log(calculateSumOfNumbers([10, "10", { number: 10 }, true, 35])); 
+console.log(calculateSumOfNumbers([20, "20", { number: 20 }, true, 55])); 
+

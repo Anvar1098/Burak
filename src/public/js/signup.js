@@ -20,7 +20,7 @@ $(function () {
                     .attr('src', URL.createObjectURL(uploadFile))
                     .addClass('success');
                 }
-                filename = $(this)[0].files[0];
+                filename = $(this)[0].files[0].name;
             }
             $(this).siblings('.upload-name').val(filename);
         } 
@@ -51,7 +51,7 @@ function validateSignUpForm() {
    }
 
    const memberImage = $('.member-image').get(0).files[0].filename
-   ? $('.member-image').get(0).files[0].filename
+   ? $('.member-image').get(0).files[0].name
    : null;
    if(!memberImage) {
     alert('Please insert restaurant image!');
