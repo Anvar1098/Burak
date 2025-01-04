@@ -57,7 +57,7 @@ function validateForm() {
      productLeftCount === "" ||
      productCollection === "" ||
      productDecs === "" ||
-     productStatus === ""
+     productStatus === "" 
     ) {
      alert('Please insert all details!');
      return false;

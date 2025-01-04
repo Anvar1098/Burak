@@ -116,11 +116,23 @@
 
 //---------------------------------------------------------------------------------------------------------
 
-function calculateSumOfNumbers(arr: any[]): number {
-  return arr.reduce((sum: number, item: any) => (typeof item === 'number' ? sum + item : sum), 0);
+// function calculateSumOfNumbers(arr: any[]): number {
+//   return arr.reduce((sum: number, item: any) => (typeof item === 'number' ? sum + item : sum), 0);
+// }
+
+
+// console.log(calculateSumOfNumbers([10, "10", { number: 10 }, true, 35])); 
+// console.log(calculateSumOfNumbers([20, "20", { number: 20 }, true, 55])); 
+
+//---------------------------------------------------------------------------------------------------------------
+
+function objectToArray(obj: Record<string, any>): [string, any][] {
+  //  convert the object into a nested array
+  return Object.entries(obj);
 }
 
 
-console.log(calculateSumOfNumbers([10, "10", { number: 10 }, true, 35])); 
-console.log(calculateSumOfNumbers([20, "20", { number: 20 }, true, 55])); 
+console.log(objectToArray({a: 10, b: 20})); 
+console.log(objectToArray({})); 
+console.log(objectToArray({x: 55, y: 66, z: 77})); 
 
