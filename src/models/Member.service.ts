@@ -37,8 +37,8 @@ class MemberService {
         const member = await this.memberModel
         .findOne(
             { 
-                memberNick: input.memberNick,
-                memberStatus: { $ne: MemberStatus.DELETE}, 
+                memberNick: input.memberNick,  // 2 ta object argument sifatida pass bolmoqda  (FILTER)
+                memberStatus: { $ne: MemberStatus.DELETE},   // (PROJECTION forced)
             }, 
             { memberNick: 1, memberPassword: 1, memberStatus: 1 })
         .exec();

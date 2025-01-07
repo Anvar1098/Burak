@@ -1,7 +1,7 @@
 console.log("Signup frontend javascript file");
 
 
-$(function () {
+$(function () {  // document ready => page toliq ochilmaguncha kuttiradi bu document net pastligi uchun
     const fileTarget = $('.file-box .upload-hidden');
     let filename;
 

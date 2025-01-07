@@ -126,13 +126,33 @@
 
 //---------------------------------------------------------------------------------------------------------------
 
-function objectToArray(obj: Record<string, any>): [string, any][] {
-  //  convert the object into a nested array
-  return Object.entries(obj);
+// function objectToArray(obj: Record<string, any>): [string, any][] {
+//   //  convert the object into a nested array
+//   return Object.entries(obj);
+// }
+
+
+// console.log(objectToArray({a: 10, b: 20})); 
+// console.log(objectToArray({})); 
+// console.log(objectToArray({x: 55, y: 66, z: 77})); 
+
+//--------------------------------------------------------------------------------------------------------------------
+
+function hasProperty(obj: object, prop: string): boolean {
+  // Loop through each property of the object
+  for (let key in obj) {
+    // Check if the current key matches the given property string
+    if (key === prop) {
+      return true; // If a match is found, return true
+    }
+  }
+  return false; 
 }
 
+console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); 
+console.log(hasProperty({ name: "BMW", model: "M3" }, "year"));  
+console.log(hasProperty({ color: "red", type: "Iphone", year: 2022 }, "color")); 
+console.log(hasProperty({ color: "red", type: "Iphone", year: 2022 }, "make"));  
 
-console.log(objectToArray({a: 10, b: 20})); 
-console.log(objectToArray({})); 
-console.log(objectToArray({x: 55, y: 66, z: 77})); 
+
 
