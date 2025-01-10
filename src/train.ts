@@ -138,21 +138,31 @@
 
 //--------------------------------------------------------------------------------------------------------------------
 
-function hasProperty(obj: object, prop: string): boolean {
-  // Loop through each property of the object
-  for (let key in obj) {
-    // Check if the current key matches the given property string
-    if (key === prop) {
-      return true; // If a match is found, return true
-    }
-  }
-  return false; 
+// function hasProperty(obj: object, prop: string): boolean {
+//   // Loop through each property of the object
+//   for (let key in obj) {
+//     // Check if the current key matches the given property string
+//     if (key === prop) {
+//       return true; // If a match is found, return true
+//     }
+//   }
+//   return false; 
+// }
+
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); 
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "year"));  
+// console.log(hasProperty({ color: "red", type: "Iphone", year: 2022 }, "color")); 
+// console.log(hasProperty({ color: "red", type: "Iphone", year: 2022 }, "make"));  
+
+//---------------------------------------------------------------------------------------------------------
+
+function calculate(input: string): number {
+  const numbers: number[] = input.split(" + ").map(Number); // Split and convert to numbers
+  return numbers[0] + numbers[1]; // Add the two numbers
 }
 
-console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); 
-console.log(hasProperty({ name: "BMW", model: "M3" }, "year"));  
-console.log(hasProperty({ color: "red", type: "Iphone", year: 2022 }, "color")); 
-console.log(hasProperty({ color: "red", type: "Iphone", year: 2022 }, "make"));  
+console.log(calculate("1 + 3")); 
+
 
 
 
