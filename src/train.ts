@@ -156,12 +156,34 @@
 
 //---------------------------------------------------------------------------------------------------------
 
-function calculate(input: string): number {
-  const numbers: number[] = input.split(" + ").map(Number); // Split and convert to numbers
-  return numbers[0] + numbers[1]; // Add the two numbers
+// function calculate(input: string): number {
+//   const numbers: number[] = input.split(" + ").map(Number); // Split and convert to numbers
+//   return numbers[0] + numbers[1]; // Add the two numbers
+// }
+
+// console.log(calculate("1 + 3")); 
+
+//--------------------------------------------------------------------------------------------------------------------
+
+function missingNumber(numbers: number[]): number {
+  // Sonlarni tartibga solamiz
+  numbers.sort((a, b) => a - b);
+
+  // Tushib qolgan sonni topamiz
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] !== i) {
+      return i;
+    }
+  }
+
+  
+  return numbers.length;
 }
 
-console.log(calculate("1 + 3")); 
+// Misol:
+console.log(missingNumber([3, 0, 1])); 
+console.log(missingNumber([0, 1]));    
+console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); 
 
 
 
