@@ -165,26 +165,33 @@
 
 //--------------------------------------------------------------------------------------------------------------------
 
-function missingNumber(numbers: number[]): number {
-  // Sonlarni tartibga solamiz
-  numbers.sort((a, b) => a - b);
+// function missingNumber(numbers: number[]): number {
+//   // Sonlarni tartibga solamiz
+//   numbers.sort((a, b) => a - b);
 
-  // Tushib qolgan sonni topamiz
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] !== i) {
-      return i;
-    }
-  }
+//   // Tushib qolgan sonni topamiz
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] !== i) {
+//       return i;
+//     }
+//   }
 
   
-  return numbers.length;
+//   return numbers.length;
+// }
+
+// // Misol:
+// console.log(missingNumber([3, 0, 1])); 
+// console.log(missingNumber([0, 1]));    
+// console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); 
+
+//---------------------------------------------------------------------------------------------------------------------------
+
+function mergeSortedArrays(array1: number[], array2: number[]): number[] {
+  return [...array1, ...array2].sort((a, b) => a - b);
 }
 
-// Misol:
-console.log(missingNumber([3, 0, 1])); 
-console.log(missingNumber([0, 1]));    
-console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); 
 
-
+console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30])); 
 
 
