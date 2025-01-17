@@ -187,11 +187,28 @@
 
 //---------------------------------------------------------------------------------------------------------------------------
 
-function mergeSortedArrays(array1: number[], array2: number[]): number[] {
-  return [...array1, ...array2].sort((a, b) => a - b);
+// function mergeSortedArrays(array1: number[], array2: number[]): number[] {
+//   return [...array1, ...array2].sort((a, b) => a - b);
+// }
+
+
+// console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+function sumOdds(number: number): number {
+  let count = 0; // Toq sonlarni sanash uchun o'zgaruvchi
+  for (let i = 0; i <= number; i++) {
+      if (i % 2 !== 0) {
+          count++; // Toq son topilsa, sanash
+      }
+  }
+  return count;
 }
 
 
-console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30])); 
+console.log(sumOdds(9)); 
+console.log(sumOdds(11));
+
 
 
