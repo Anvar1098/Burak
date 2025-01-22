@@ -196,19 +196,37 @@
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 
-function sumOdds(number: number): number {
-  let count = 0; // Toq sonlarni sanash uchun o'zgaruvchi
-  for (let i = 0; i <= number; i++) {
-      if (i % 2 !== 0) {
-          count++; // Toq son topilsa, sanash
-      }
+// function sumOdds(number: number): number {
+//   let count = 0; // Toq sonlarni sanash uchun o'zgaruvchi
+//   for (let i = 0; i <= number; i++) {
+//       if (i % 2 !== 0) {
+//           count++; // Toq son topilsa, sanash
+//       }
+//   }
+//   return count;
+// }
+
+
+// console.log(sumOdds(9)); 
+// console.log(sumOdds(11));
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+function countChars(str: string): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (result[char] === undefined) {
+      result[char] = 1; // Harf birinchi marta uchrasa.
+    } else {
+      result[char] += 1; // Harf qayta uchrasa.
+    }
   }
-  return count;
+  return result;
 }
 
 
-console.log(sumOdds(9)); 
-console.log(sumOdds(11));
+console.log(countChars("hello")); 
 
 
 
