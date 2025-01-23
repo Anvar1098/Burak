@@ -3,9 +3,11 @@ const router = express.Router();
 import memberController from "./controllers/member.controller";
 
 // SPA UCHUN
-router.post("/login", memberController.login);
-router.post("/signup", memberController.signup);
+/** Members */
+router.post("/member/login", memberController.login);
+router.post("/member/signup", memberController.signup);
+router.get("/member/detail", memberController.verifyAuth);
 
-
+/** Orders */
 
 export default router;  
