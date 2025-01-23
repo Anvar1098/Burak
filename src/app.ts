@@ -4,6 +4,7 @@ import path from 'path';
 import router from "./router";
 import routerAdmin from "./router-admin";
 import morgan from 'morgan';
+import cookieParser from "cookie-parser";
 import { MORGAN_FORMAT } from './libs/config';
 
 // TCP 2 => Authentication uchun fakat
@@ -22,6 +23,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended:true })); // Traditional API
 app.use(express.json());                        // REST API
+app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));                 // Logging mexanizm 
 
 
