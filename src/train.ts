@@ -212,21 +212,37 @@
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
-function countChars(str: string): Record<string, number> {
-  const result: Record<string, number> = {};
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i];
-    if (result[char] === undefined) {
-      result[char] = 1; // Harf birinchi marta uchrasa.
-    } else {
-      result[char] += 1; // Harf qayta uchrasa.
-    }
+// function countChars(str: string): Record<string, number> {
+//   const result: Record<string, number> = {};
+//   for (let i = 0; i < str.length; i++) {
+//     const char = str[i];
+//     if (result[char] === undefined) {
+//       result[char] = 1; // Harf birinchi marta uchrasa.
+//     } else {
+//       result[char] += 1; // Harf qayta uchrasa.
+//     }
+//   }
+//   return result;
+// }
+
+
+// console.log(countChars("hello")); 
+
+
+//---------------------------------------------------------------------------------------------------------------------
+
+function chunkArray<T>(array: T[], size: number): T[][] {
+  const result: T[][] = []; // Define the result array with type T[][]
+                            // T =>  (<T>) to handle arrays of any type (number, string, objects, etc.).
+  for (let i = 0; i < array.length; i += size) {
+    result.push(array.slice(i, i + size)); // Push chunks into the result array
   }
+
   return result;
 }
 
 
-console.log(countChars("hello")); 
-
+const chunks = chunkArray<number>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3);
+console.log(chunks); 
 
 
