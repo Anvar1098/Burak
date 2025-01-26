@@ -231,18 +231,49 @@
 
 //---------------------------------------------------------------------------------------------------------------------
 
-function chunkArray<T>(array: T[], size: number): T[][] {
-  const result: T[][] = []; // Define the result array with type T[][]
-                            // T =>  (<T>) to handle arrays of any type (number, string, objects, etc.).
-  for (let i = 0; i < array.length; i += size) {
-    result.push(array.slice(i, i + size)); // Push chunks into the result array
-  }
+// function chunkArray<T>(array: T[], size: number): T[][] {
+//   const result: T[][] = []; // Define the result array with type T[][]
+//                             // T =>  (<T>) to handle arrays of any type (number, string, objects, etc.).
+//   for (let i = 0; i < array.length; i += size) {
+//     result.push(array.slice(i, i + size)); // Push chunks into the result array
+//   }
 
-  return result;
+//   return result;
+// }
+
+
+// const chunks = chunkArray<number>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3);
+// console.log(chunks); 
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
+function countOccurrences(obj: Record<string, any>, key: string): number {
+  return Object.keys(obj).reduce((count, k) => {
+    return count + (k === key ? 1 : 0) + 
+           (typeof obj[k] === 'object' && obj[k] !== null ? countOccurrences(obj[k], key) : 0);
+  }, 0);
 }
 
 
-const chunks = chunkArray<number>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3);
-console.log(chunks); 
+const data = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
+console.log(countOccurrences(data, 'model')); 
+
+
+const person = {
+  name: 'John',
+  address: {
+    city: 'New York',
+    zip: 10001,
+    details: {
+      neighborhood: 'Manhattan',
+      city: 'Brooklyn',
+    },
+  },
+  hobbies: ['reading', 'traveling'],
+};
+
+console.log(countOccurrences(person, 'city')); 
+
+
 
 
