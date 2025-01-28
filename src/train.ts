@@ -247,32 +247,43 @@
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 
-function countOccurrences(obj: Record<string, any>, key: string): number {
-  return Object.keys(obj).reduce((count, k) => {
-    return count + (k === key ? 1 : 0) + 
-           (typeof obj[k] === 'object' && obj[k] !== null ? countOccurrences(obj[k], key) : 0);
-  }, 0);
+// function countOccurrences(obj: Record<string, any>, key: string): number {
+//   return Object.keys(obj).reduce((count, k) => {
+//     return count + (k === key ? 1 : 0) + 
+//            (typeof obj[k] === 'object' && obj[k] !== null ? countOccurrences(obj[k], key) : 0);
+//   }, 0);
+// }
+
+
+// const data = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
+// console.log(countOccurrences(data, 'model')); 
+
+
+// const person = {
+//   name: 'John',
+//   address: {
+//     city: 'New York',
+//     zip: 10001,
+//     details: {
+//       neighborhood: 'Manhattan',
+//       city: 'Brooklyn',
+//     },
+//   },
+//   hobbies: ['reading', 'traveling'],
+// };
+
+// console.log(countOccurrences(person, 'city')); 
+
+//------------------------------------------------------------------------------------------------------------------------
+
+function findIntersection(arr1: number[], arr2: number[]): number[] {
+  return arr1
+    .filter((value) => arr2.includes(value)) // Ikkinchi arrayda mavjud bo'lgan elementlarni filtrlash
+    .sort((a, b) => a - b); // Natijani tartiblash
 }
 
-
-const data = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
-console.log(countOccurrences(data, 'model')); 
-
-
-const person = {
-  name: 'John',
-  address: {
-    city: 'New York',
-    zip: 10001,
-    details: {
-      neighborhood: 'Manhattan',
-      city: 'Brooklyn',
-    },
-  },
-  hobbies: ['reading', 'traveling'],
-};
-
-console.log(countOccurrences(person, 'city')); 
+// Misol
+console.log(findIntersection([1, 2, 3], [3, 2, 0])); 
 
 
 
