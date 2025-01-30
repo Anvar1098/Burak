@@ -1,11 +1,12 @@
 import OrderItemModel from "../schema/OrderItem.model";
 import OrderModel from "../schema/Order.model";
-import { Order, OrderItemInput } from "../libs/types/order";
+import { Order, OrderInquiry, OrderItemInput } from "../libs/types/order";
 import { Member } from "../libs/types/member";
 import { shapeIntoMongooseObjectId } from "../libs/config";
 import { HttpCode, Message } from "../libs/Errors";
 import Errors from "../libs/Errors";
 import { ObjectId } from "mongoose";
+import { OrderStatus } from "../libs/enums/order.enum";
 
 class OrderService {
   private readonly orderModel;
@@ -35,7 +36,7 @@ class OrderService {
       const orderId = newOrder._id;
       console.log("orderId:", newOrder._id);
       await this.recordOrderitem(orderId, input);
-      
+
       //TODO: create order item
       return newOrder;
     } catch (err) {
@@ -48,15 +49,49 @@ class OrderService {
     orderId: ObjectId,
     input: OrderItemInput[]
   ): Promise<void> {
-    const promisedList = input.map( async (item: OrderItemInput) => {
-        item.orderId = orderId;
-        item.productId = shapeIntoMongooseObjectId(item.productId);
-        await this.orderItemModel.create(item);
-        return 'INSERTED';
+    const promisedList = input.map(async (item: OrderItemInput) => {
+      item.orderId = orderId;
+      item.productId = shapeIntoMongooseObjectId(item.productId);
+      await this.orderItemModel.create(item);
+      return "INSERTED";
     });
 
-    console.log('promisedList:', promisedList);
+    console.log("promisedList:", promisedList);
     const orderItemsState = await Promise.all(promisedList);
+  }
+
+  public async getMyOrders(
+    member: Member,
+    inquiry: OrderInquiry
+  ): Promise<Order[]> {
+    const memberId = shapeIntoMongooseObjectId(member._id);
+    const matches = { memberId: memberId, orderStatus: inquiry.orderStatus };
+
+    const result = await this.orderModel.aggregate([
+        { $match: matches },
+        { $sort: { updateAt: -1 } },
+        { $skip: (inquiry.page - 1) * inquiry.limit },
+        { $limit: inquiry.limit },
+        {
+            $lookup: {
+                from: "orderItems",
+                localField: "_id",
+                foreignField: "orderId",
+                as: "orderItems",
+            },
+        },
+        {
+            $lookup: {
+                from: "products",
+                localField: 'orderItems.productId',
+                foreignField: '_id',
+                as: 'productData'
+            }
+        }
+    ])
+    .exec();
+    if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    return result;
   }
 }
 
