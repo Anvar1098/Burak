@@ -276,14 +276,28 @@
 
 //------------------------------------------------------------------------------------------------------------------------
 
-function findIntersection(arr1: number[], arr2: number[]): number[] {
-  return arr1
-    .filter((value) => arr2.includes(value)) // Ikkinchi arrayda mavjud bo'lgan elementlarni filtrlash
-    .sort((a, b) => a - b); // Natijani tartiblash
+// function findIntersection(arr1: number[], arr2: number[]): number[] {
+//   return arr1
+//     .filter((value) => arr2.includes(value)) // Ikkinchi arrayda mavjud bo'lgan elementlarni filtrlash
+//     .sort((a, b) => a - b); // Natijani tartiblash
+// }
+
+// // Misol
+// console.log(findIntersection([1, 2, 3], [3, 2, 0])); 
+
+//--------------------------------------------------------------------------------------------------------------------------------------
+
+function sumEvens(arr: number[]): number {
+  return arr.filter(num => num % 2 === 0).reduce((acc, num) => acc + num, 0);
 }
 
-// Misol
-console.log(findIntersection([1, 2, 3], [3, 2, 0])); 
+
+console.log(sumEvens([1, 2, 3])); 
+console.log(sumEvens([1, 2, 3, 2])); 
+console.log(sumEvens([4, 5, 6, 7, 8])); 
+
+// 	•	arr: number[] → Ensures the function only accepts an array of numbers.
+//	•	: number → Guarantees the function returns a number.
 
 
 
