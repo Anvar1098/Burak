@@ -287,18 +287,26 @@
 
 //--------------------------------------------------------------------------------------------------------------------------------------
 
-function sumEvens(arr: number[]): number {
-  return arr.filter(num => num % 2 === 0).reduce((acc, num) => acc + num, 0);
-}
+// function sumEvens(arr: number[]): number {
+//   return arr.filter(num => num % 2 === 0).reduce((acc, num) => acc + num, 0);
+// }
 
 
-console.log(sumEvens([1, 2, 3])); 
-console.log(sumEvens([1, 2, 3, 2])); 
-console.log(sumEvens([4, 5, 6, 7, 8])); 
+// console.log(sumEvens([1, 2, 3])); 
+// console.log(sumEvens([1, 2, 3, 2])); 
+// console.log(sumEvens([4, 5, 6, 7, 8])); 
 
 // 	•	arr: number[] → Ensures the function only accepts an array of numbers.
 //	•	: number → Guarantees the function returns a number.
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+type Person = { age: number };
+
+const sortByAge = (arr: Person[]): Person[] => arr.sort((a, b) => a.age - b.age);
+
+
+console.log(sortByAge([{ age: 23 }, { age: 21 }, { age: 13 }]));
 
 
 
