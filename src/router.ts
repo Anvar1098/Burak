@@ -41,9 +41,9 @@ router.get(
 
 /** Orders */
 router.post(
-  "/order/create",
-  memberController.verifyAuth,
-  orderController.createOrder
+  "/order/create",                        // req bor (req. -member)
+  memberController.verifyAuth,           // Authentication Middleware  req. +member
+  orderController.createOrder            // req.member hosil boldi => yani req boyitildi
 );
 
 router.get(

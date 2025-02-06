@@ -25,11 +25,11 @@ class OrderService {
     this.memberService = new MemberService();
   }
 
-  public async createOrder(
+  public async createOrder(                       // Order va uning soyasi => orderItem (pasdagi private mantiq)
     member: Member,
     input: OrderItemInput[]
   ): Promise<Order> {
-    const memberId = shapeIntoMongooseObjectId(member._id);
+    const memberId = shapeIntoMongooseObjectId(member._id);  // memberID => login bolgan user
     const amount = input.reduce((accumulator: number, item: OrderItemInput) => {
       return accumulator + item.itemPrice * item.itemQuantity;
     }, 0);
@@ -53,19 +53,22 @@ class OrderService {
     }
   }
 
-  private async recordOrderitem(
-    orderId: ObjectId,
+  private async recordOrderitem(      // Faqat class ichida ishlatamiz shuni uchun private
+    orderId: ObjectId,                // Shuningdek orderga tegishli bolgan mantiqlani boshqa collectionga saqlayapmiz (Soya algaritmi)
     input: OrderItemInput[]
   ): Promise<void> {
     const promisedList = input.map(async (item: OrderItemInput) => {
       item.orderId = orderId;
       item.productId = shapeIntoMongooseObjectId(item.productId);
-      await this.orderItemModel.create(item);
-      return "INSERTED";
+      return await this.orderItemModel.create(item);
     });
 
     console.log("promisedList:", promisedList);
+    // promisedList => [Pending1, Pending2, Pending3]
+   
+   
     const orderItemsState = await Promise.all(promisedList);
+    // Tayyor orderlarni beradi => [orderItem1, orderItem2, orderItem3] yani kuttirib pendingdan tayyor natijani berdi
   }
 
   public async getMyOrders(
@@ -81,14 +84,16 @@ class OrderService {
         { $sort: { updateAt: -1 } },
         { $skip: (inquiry.page - 1) * inquiry.limit },
         { $limit: inquiry.limit },
+        // [order1._id, order2._id, order3._id]
         {
           $lookup: {
             from: "orderItems",
             localField: "_id",
             foreignField: "orderId",
-            as: "orderItems",
+            as: "orderItems", 
           },
         },
+        // [order1+orderItems, order2+orderItems, order3+orderItems] => yani order boyitildi
         {
           $lookup: {
             from: "products",
@@ -97,6 +102,7 @@ class OrderService {
             as: "productData",
           },
         },
+        // [order1+productData, order2+productData, order3+productData] => 
       ])
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
