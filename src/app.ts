@@ -5,6 +5,7 @@ import router from "./router";
 import routerAdmin from "./router-admin";
 import morgan from 'morgan';
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import { MORGAN_FORMAT } from './libs/config';
 
 // TCP 2 => Authentication uchun fakat
@@ -25,6 +26,7 @@ app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended:true })); // Traditional API
 app.use(express.json());                        // REST API
 app.use(cookieParser());
+app.use(cors({ credentials: true, origin: true }));
 app.use(morgan(MORGAN_FORMAT));                 // Logging mexanizm 
 
 
@@ -33,7 +35,7 @@ app.use(morgan(MORGAN_FORMAT));                 // Logging mexanizm
 // 1)Tamga qurish           2) Tamgani oqish
 app.use(
     session({
-      secret: String(process.env.SESSION_SECRET),
+      secret: String(process.env.SESSION_SECRET), 
       cookie: {
         maxAge: 1000 * 3600 * 6,  // 6h
       },
