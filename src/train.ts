@@ -311,11 +311,24 @@
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-function celsiusToFahrenheit(celsius: number): number {
-  return (celsius * 9/5) + 32;
+// function celsiusToFahrenheit(celsius: number): number {
+//   return (celsius * 9/5) + 32;
+// }
+
+// console.log(celsiusToFahrenheit(0));  
+// console.log(celsiusToFahrenheit(10)); 
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+function changeNumberInArray(index: number, arr: number[], newValue: number): number[] {
+  if (index < 0 || index >= arr.length) {
+      throw new Error("Index out of bounds");
+  }
+
+  arr[index] = newValue;
+  return arr;
 }
 
-console.log(celsiusToFahrenheit(0));  
-console.log(celsiusToFahrenheit(10)); 
+console.log(changeNumberInArray(1, [1, 3, 7, 2], 2)); 
 
 
