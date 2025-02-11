@@ -23,7 +23,7 @@ const productSchema = new Schema(
             required: true,
         },
         productPrice: {
-            type: String,
+            type: Number,
             required: true,
         },
         productLeftCount: {
