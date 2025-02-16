@@ -333,9 +333,23 @@
 
 //-------------------------------------------------------------------------------------------------------------------------
 
-function removeDuplicate(str: string): string {
-  return [...new Set(str)].join('');
+// function removeDuplicate(str: string): string {
+//   return [...new Set(str)].join('');
+// }
+
+
+// console.log(removeDuplicate("stringg"));
+
+//----------------------------------------------------------------------------------------------------------------------------
+
+function capitalizeWords(str: string): string {
+  return str
+      .split(' ')
+      .map(word => word.length > 2 ? word[0].toUpperCase() + word.slice(1) : word)
+      .join(' ');
 }
 
 
-console.log(removeDuplicate("stringg"));
+console.log(capitalizeWords("name should be a string")); 
+console.log(capitalizeWords("hello world")); 
+console.log(capitalizeWords("a is an example")); 
