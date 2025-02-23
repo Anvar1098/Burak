@@ -342,14 +342,29 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-function capitalizeWords(str: string): string {
+// function capitalizeWords(str: string): string {
+//   return str
+//       .split(' ')
+//       .map(word => word.length > 2 ? word[0].toUpperCase() + word.slice(1) : word)
+//       .join(' ');
+// }
+
+
+// console.log(capitalizeWords("name should be a string")); 
+// console.log(capitalizeWords("hello world")); 
+// console.log(capitalizeWords("a is an example"));
+
+//--------------------------------------------------------------------------------------------------------------------
+
+function convertToSnakeCase(str: string): string {
   return str
-      .split(' ')
-      .map(word => word.length > 2 ? word[0].toUpperCase() + word.slice(1) : word)
-      .join(' ');
+      .toLowerCase()           // Step 1: Convert to lowercase
+      .split(" ")              // Step 2: Split into words
+      .filter(Boolean)         // Step 3: Remove empty words
+      .join("_");              // Step 4: Join with underscores
 }
 
 
-console.log(capitalizeWords("name should be a string")); 
-console.log(capitalizeWords("hello world")); 
-console.log(capitalizeWords("a is an example")); 
+console.log(convertToSnakeCase("Name should be a string")); 
+console.log(convertToSnakeCase("  hello   world  ")); 
+console.log(convertToSnakeCase("Already_snake_case")); 

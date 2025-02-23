@@ -1,7 +1,7 @@
 import { ObjectId } from "mongoose";
 import { OrderStatus } from "../enums/order.enum";
 import { Product } from "./product";
-import { isMainThread } from "worker_threads";
+
 
 export interface OrderItem {
     _id: ObjectId;
