@@ -356,15 +356,32 @@
 
 //--------------------------------------------------------------------------------------------------------------------
 
-function convertToSnakeCase(str: string): string {
-  return str
-      .toLowerCase()           // Step 1: Convert to lowercase
-      .split(" ")              // Step 2: Split into words
-      .filter(Boolean)         // Step 3: Remove empty words
-      .join("_");              // Step 4: Join with underscores
+// function convertToSnakeCase(str: string): string {
+//   return str
+//       .toLowerCase()           // Step 1: Convert to lowercase
+//       .split(" ")              // Step 2: Split into words
+//       .filter(Boolean)         // Step 3: Remove empty words
+//       .join("_");              // Step 4: Join with underscores
+// }
+
+
+// console.log(convertToSnakeCase("Name should be a string")); 
+// console.log(convertToSnakeCase("  hello   world  ")); 
+// console.log(convertToSnakeCase("Already_snake_case")); 
+
+//-----------------------------------------------------------------------------------------------------------
+
+function findDisappearedNumbers(arr: number[]): number[] {
+  arr.sort((a, b) => a - b); // Sort the array
+  let missing: number[] = [];
+  
+  for (let i = arr[0]; i < arr[arr.length - 1]; i++) {
+      if (!arr.includes(i)) {
+          missing.push(i);
+      }
+  }
+  
+  return missing;
 }
 
-
-console.log(convertToSnakeCase("Name should be a string")); 
-console.log(convertToSnakeCase("  hello   world  ")); 
-console.log(convertToSnakeCase("Already_snake_case")); 
+console.log(findDisappearedNumbers([1, 3, 4, 7])); 
