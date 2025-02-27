@@ -154,7 +154,7 @@ class MemberService {
     const member = await this.memberModel
       .findOne(
         { memberNick: input.memberNick },
-        { memberNick: 1, memberPassword: 1 }
+        { memberNick: 1, memberPassword: 1 } // only return the memberNick and memberPassword fields and ignore the rest of the fields
       )
       .exec();
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
@@ -182,7 +182,7 @@ class MemberService {
   }
 
   public async updateChosenUser(input: MemberUpdateInput): Promise<Member> {
-    const memberId = shapeIntoMongooseObjectId(input._id);
+    const memberId = shapeIntoMongooseObjectId(input._id); // ensures that the _id is in the correct format (	If you don’t shape it properly, Mongoose might not be able to query the database correctly, )
 
     const result = await this.memberModel
       .findByIdAndUpdate({ _id: memberId }, input, { new: true })

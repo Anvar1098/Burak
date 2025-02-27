@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended:true })); // Traditional API
 app.use(express.json());                        // REST API
-app.use(cookieParser());
-app.use(cors({ credentials: true, origin: true }));
+app.use(cookieParser());                        // parses (break down) cookies from incoming requests in Express.js
+app.use(cors({ credentials: true, origin: true })); // if the frontend tries to fetch data from the backend, the browser blocks it unless CORS is enabled. (This allows your frontend to talk to your backend safely. )
 app.use(morgan(MORGAN_FORMAT));                 // Logging mexanizm 
 
 

@@ -45,7 +45,7 @@ restaurantController.processSignup = async (
 ) => {
   try {
     console.log("processSignup");
-    const file = req.file;
+    const file = req.file;  // is used to retrieve an uploaded file 
     if (!file)
       throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
 
@@ -107,9 +107,8 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
 restaurantController.getUsers = async (req: Request, res: Response) => {
   // parametr
   try {
-    console.log("getUsers"); // shu joygacha bo'lgan mantiqda xato
-    //bo'lgan bo'lmaganini tekshirish uchun
-    const result = await memberService.getUsers(); //  memberService. (Objectini .getUsers metodini chaqirdik)
+    console.log("getUsers");
+    const result = await memberService.getUsers(); 
     console.log("Result:", result);
     res.render("users", { users: result }); // local data yuborish (ejs ga)
   } catch (err) {
@@ -145,7 +144,7 @@ restaurantController.checkAuthSession = async (
   }
 };
 
-restaurantController.verifyRestaurant = (
+restaurantController.verifyRestaurant = ( // middleware
   req: AdminRequest,
   res: Response,
   next: NextFunction

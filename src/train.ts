@@ -371,17 +371,31 @@
 
 //-----------------------------------------------------------------------------------------------------------
 
-function findDisappearedNumbers(arr: number[]): number[] {
-  arr.sort((a, b) => a - b); // Sort the array
-  let missing: number[] = [];
+// function findDisappearedNumbers(arr: number[]): number[] {
+//   arr.sort((a, b) => a - b); // Sort the array
+//   let missing: number[] = [];
   
-  for (let i = arr[0]; i < arr[arr.length - 1]; i++) {
-      if (!arr.includes(i)) {
-          missing.push(i);
-      }
-  }
+//   for (let i = arr[0]; i < arr[arr.length - 1]; i++) {
+//       if (!arr.includes(i)) {
+//           missing.push(i);
+//       }
+//   }
   
-  return missing;
+//   return missing;
+// }
+
+// console.log(findDisappearedNumbers([1, 3, 4, 7])); 
+
+//--------------------------------------------------------------------------------------------------------------------------
+
+function delayHelloWorld(message: string): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(message);
+    }, 3000);  
+  });
 }
 
-console.log(findDisappearedNumbers([1, 3, 4, 7])); 
+delayHelloWorld("Hello World").then((result) => {
+  console.log(result); 
+});

@@ -22,7 +22,8 @@ routerAdmin
   .get("/check-me", restaurantController.checkAuthSession)
   .get("/logout", restaurantController.logout);
 
-/*  Product */
+
+  /*  Product */
 routerAdmin.get(
   "/product/all",
   restaurantController.verifyRestaurant,
@@ -39,6 +40,7 @@ routerAdmin.post(
   restaurantController.verifyRestaurant,
   productController.updateChosenProduct
 );
+
 
 /*  User */
 routerAdmin.get(
