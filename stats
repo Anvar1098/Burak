@@ -1,0 +1,66 @@
+<Box sx={{ bgcolor: "#1c1c1c", minHeight: "100vh", py: 4 }}>
+      <Container maxWidth="xl">
+        <Typography variant="h4" color="white" mb={4}>
+          Dashboard
+        </Typography>
+
+        {/* Stat Cards */}
+        <Grid container spacing={3}>
+          {statCards.map((card) => (
+            <Grid item xs={12} sm={6} md={3} key={card.title}>
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 3,
+                  textAlign: "center",
+                  backgroundColor: "#2d2d2d",
+                  color: "white",
+                  borderRadius: 2,
+                }}
+              >
+                <Typography variant="h6" gutterBottom>
+                  {card.title}
+                </Typography>
+                <Typography variant="h4" fontWeight="bold">
+                  {card.value}
+                </Typography>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* Charts */}
+        <Grid container spacing={3} mt={3}>
+          <Grid item xs={12} md={8}>
+            <Paper
+              elevation={3}
+              sx={{
+                p: 3,
+                backgroundColor: "#2d2d2d",
+                borderRadius: 2,
+              }}
+            >
+              <Typography variant="h6" color="white" mb={2}>
+                Sales Overview
+              </Typography>
+              <Line data={lineData} />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper
+              elevation={3}
+              sx={{
+                p: 3,
+                backgroundColor: "#2d2d2d",
+                borderRadius: 2,
+              }}
+            >
+              <Typography variant="h6" color="white" mb={2}>
+                Product Share
+              </Typography>
+              <Doughnut data={doughnutData} />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>

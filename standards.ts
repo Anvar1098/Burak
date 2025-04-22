@@ -39,3 +39,12 @@ By default, Express’s Request and Response objects do not have custom properti
 
 
    */
+
+
+  /**
+  
+  Final Thought
+	•	Traditional API = Directly serves HTML (good for small, simple projects).
+	•	REST API = Serves only data, and the frontend decides how to display it (better for modern, scalable applications).
+
+   */
